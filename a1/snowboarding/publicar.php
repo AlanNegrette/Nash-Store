@@ -113,66 +113,107 @@
 	    </div>
 	</div>
 
-	<?php 
-  include('Backend/conexion.php');
-  $query = "select * from imagenes";
-  $resultado = mysqli_query($conn,$query);
+<?php
+$txtID=(isset($_POST['txtID']))?$_POST['txtID']:"";
+$txtNombre=(isset($_POST['txtNombre']))?$_POST['txtNombre']:"";
+$txtImagen=(isset($_FILES['txtImagen']['name']))?$_FILES['txtImagen']['name']:"";
+$txtDescripcion=(isset($_POST['txtDescripcion']))?$_POST['txtDescripcion']:"";
+$txtPrecio=(isset($_POST['txtPrecio']))?$_POST['txtPrecio']:"";
+$accion=(isset($_POST['accion']))?$_POST['accion']:"";
+
+include('Backend/conexion.php');
+
+switch($accion){ 
+
+    case  "Agregar":
+      echo "presionado boton agregar";   
+      $sentenciaSQL=$conn->prepare("INSERT INTO productos (nombre, descripcion, precio, imagen) VALUES (:nombre,:descripcion,:precio,:imagen);");
+      $sentenciaSQL-> bindParam(':nombre',$txtNombre);
+      $sentenciaSQL-> bindParam(':descripcion',$txtDescripcion);
+      $sentenciaSQL-> bindParam(':nombre',$txtPrecio);
+      $sentenciaSQL-> bindParam(':nombre',$txtImagen);
+      $sentenciaSQL->execute();
+      break;
+
+    case  "Modificar":
+      echo "presionado boton modificar";
+      break;
+
+    case  "Cancelar":
+      echo "presionado boton cancelar";
+      break;
+}
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <title>Document</title>
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-       <div class="col-lg-4">
-         <h1 class="text-primary">Subir imagen</h1>
-         <form action="Backend/subir.php" method="post" enctype="multipart/form-data">
-          <div class="form-group">
-              <label for="my-input">Seleccione una Imagen</label>
-              <input id="my-input"  type="file" name="imagen">
+
+<div class="col-md-5">
+
+        <div class="card">
+          <div class="card-header">
+            Publicaciones
           </div>
-          <div class="form-group">
-              <label for="my-input">Titulo de la Imagen</label>
-              <input id="my-input" class="form-control" type="text" name="titulo">
+
+          <div class="card-body">
+
+            <form method="POST" enctype="multipart/form-data">
+                <div class = "form-group">
+                <label for="txtID">ID</label>
+                <input type="text" class="form-control" id="txtID" name="txtID" placeholder="Introduzca ID">
+                </div>
+
+                <div class = "form-group">
+                <label for="txtNombre">Nombre</label>
+                <input type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="Nombre del producto">
+                </div>
+
+                <div class = "form-group">
+                <label for="txtDescripcion">Descripcion</label>
+                <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion del producto">
+                </div>
+
+                <div class = "form-group">
+                <label for="txtPrecio">Precio</label>
+                <input type="text" class="form-control" id="txtPrecio" name="txtPrecio" placeholder="Precio del producto">
+                </div>
+
+                <div class = "form-group">
+                <label for="txtImagen">Imagen</label>
+                <input type="file" class="form-control" id="txtImagen" name="txtImagen" placeholder="Imagen del producto">
+                </div>
+
+                <div class="btn-group" role="group" aria-label="">
+                  <button type="submit" name="accion" value="Agregar" class="btn btn-success">Agregar</button>
+                  <button type="submit" name="accion" value="Modificar" class="btn btn-warning">Modificar</button>
+                  <button type="submit" name="accion" value="Cancelar" class="btn btn-info">Cancelar</button>
+                </div>
+
+            </form>
+            
           </div>
-          <?php if(isset($_SESSION['mensaje'])){ ?>
-          <div class="alert alert-<?php echo $_SESSION['tipo'] ?> alert-dismissible fade show" role="alert">
-         <strong><?php echo $_SESSION['mensaje']; ?></strong> 
-       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-     </button >
-       </div>
-          <?php session_unset(); } ?>
-          <input type="submit" value="Guardar" class="btn btn-primary" name="Guardar" >
-         </form>
-       </div>
-       <div class="col-lg-8">
-           <h1 class="text-primary text-center">Galeria de Imagenes</h1>
-           <hr>
-           <div class="card-columns">
-               <?php foreach($resultado as $row) { ?>
-         <div class="card">
-      <img src="Backend/imagenes/<?php echo $row['imagen']; ?>" class="card-img-top" alt="...">
-       <div class="card-body">
-      <h5 class="card-title"><strong><?php echo $row['nombre']; ?></strong></h5>
-    </div>
-               
-  </div>
+        </div>
 
-  <?php }?>
-       </div>
-    </div>
-  </div>
+        
+                        
+</div>
+<div class="col-md-7">
+        Tus publicaciones
 
-
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-</body>
-</html>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Imagen</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2</td>
+              <td>aa</td>
+              <td>x</td>
+              <td>Seleccionar Borrar</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
