@@ -125,9 +125,9 @@ include('Backend/conexion.php');
 
 switch($accion){ 
 
-    case  "Agregar":
+    case "Agregar":
       echo "presionado boton agregar";   
-      $sentenciaSQL=$conn->prepare("INSERT INTO productos (nombre, descripcion, precio, imagen) VALUES (:nombre,:descripcion,:precio,:imagen);");
+      $sentenciaSQL=$conexion->prepare("INSERT INTO productos (nombre, descripcion, precio, imagen) VALUES (:nombre,:descripcion,:precio,:imagen);");
       $sentenciaSQL-> bindParam(':nombre',$txtNombre);
       $sentenciaSQL-> bindParam(':descripcion',$txtDescripcion);
       $sentenciaSQL-> bindParam(':nombre',$txtPrecio);
@@ -135,11 +135,11 @@ switch($accion){
       $sentenciaSQL->execute();
       break;
 
-    case  "Modificar":
+    case "Modificar":
       echo "presionado boton modificar";
       break;
 
-    case  "Cancelar":
+    case "Cancelar":
       echo "presionado boton cancelar";
       break;
 }
