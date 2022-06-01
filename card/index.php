@@ -15,6 +15,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="assets/css/styles.css" rel="stylesheet" />
     <link href="assets/css/estilos.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/sb-admin-2.min.css">
 </head>
 
 <body>
@@ -36,7 +37,10 @@
                             <a href="#" class="nav-link" category="<?php echo $data['categoria']; ?>"><?php echo $data['categoria']; ?></a>
                         <?php } ?>
                     </ul>
-                    <a href='admin/productos.php#' class="nav-link text-info" id="administrador" category="all"> Publicar</a>
+                    <a href='publicar.php' class="nav-link text-info" id="administrador" category="all"> Publicar productos</a>
+                    <a href='admin/productos.php#' class="nav-link text-info" id="administrador" category="all"> VERSION ADMIN</a>
+                    
+                    
                 </div>
             </div>
         </nav>
