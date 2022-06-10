@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2021 a las 08:41:10
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 8.0.9
+-- Tiempo de generación: 10-06-2022 a las 03:27:25
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -59,19 +59,27 @@ CREATE TABLE `productos` (
   `id_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `productos`
+-- Estructura de tabla para la tabla `users`
 --
 
-INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio_normal`, `precio_rebajado`, `cantidad`, `imagen`, `id_categoria`) VALUES
-(1, 'laptop', 'lenovo core i7', '5000.00', '4800.00', 5, '20211210162502.jpg', 1),
-(2, 'Celular', 'samsung galaxy a12', '800.00', '700.00', 20, '20211211192037.jpg', 1),
-(3, 'CELULAR', 'LG K50', '800.00', '750.00', 23, '20211211212315.jpg', 1),
-(4, 'COMPUTADORA', 'HP Touchsmart 300', '2500.00', '2000.00', 15, '20211211212449.jpg', 1),
-(5, 'Vino', 'Ninguna', '28.00', '20.00', 30, '20211212082421.jpg', 2),
-(6, 'Coca cola', '1.5 ml', '5.00', '5.00', 15, '20211212082628.jpg', 2),
-(7, 'Escritorio', 'Meterial Fino', '230.00', '200.00', 10, '20211212082759.jpg', 3),
-(8, 'Abrigo', 'Para niños', '130.00', '120.00', 90, '20211212083037.jpg', 4);
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
+(1, 'alan', '$2y$10$/IbLgwkzmCpBTCuzp4xr7../O/jtyH26.21HR49PIqhMT6q86hEsq', '2022-06-09 22:19:41'),
+(2, 'alan2', '$2y$10$lV.AbnmrZpagRA1nRXmhremJYcdECoW.7n74vm/YJphJeisgPF7la', '2022-06-09 22:21:08'),
+(3, 'alan4', '$2y$10$5HIoQeqQrOCK06KkFT6BOu6oqUu81mDrYk/xe7NKhzwty/ClSGBZm', '2022-06-09 22:22:09');
 
 -- --------------------------------------------------------
 
@@ -91,7 +99,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `clave`) VALUES
-(1, 'admin', 'Angel Sifuentes', '21232f297a57a5a743894a0e4a801fc3');
+(1, 'admin', 'Alan Negrette', '21232f297a57a5a743894a0e4a801fc3');
 
 --
 -- Índices para tablas volcadas
@@ -109,6 +117,13 @@ ALTER TABLE `categorias`
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_categoria` (`id_categoria`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -130,13 +145,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
