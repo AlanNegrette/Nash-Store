@@ -39,6 +39,8 @@
                     </ul>
                     <a href='publicar.php' class="nav-link text-info" id="administrador" category="all"> Publicar productos</a>
                     <a href='admin/productos.php#' class="nav-link text-info" id="administrador" category="all"> VERSION ADMIN</a>
+                    <a href="salir.php" class="nav-link text-info" id="administrador">Cerrar Sesión</a>
+ 
                     
                     
                 </div>

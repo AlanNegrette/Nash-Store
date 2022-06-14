@@ -1,124 +1,155 @@
-<?php
-// Initialize the session
-session_start();
- 
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-  header("location: paginaPrincipal.php");
-  exit;
-}
- 
-// Include config file
-require_once "config/config2.php";
- 
-// Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = "";
- 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    // Check if username is empty
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Por favor ingrese su usuario.";
-    } else{
-        $username = trim($_POST["username"]);
-    }
-    
-    // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Por favor ingrese su contraseña.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-    
-    // Validate credentials
-    if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
-            // Set parameters
-            $param_username = $username;
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Store result
-                mysqli_stmt_store_result($stmt);
-                
-                // Check if username exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
-                    // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
-                            // Password is correct, so start a new session
-                            session_start();
-                            
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
-                            
-                            // Redirect user to welcome page
-                            header("location: paginaPrincipal.php");
-                        } else{
-                            // Display an error message if password is not valid
-                            $password_err = "La contraseña que has ingresado no es válida.";
-                        }
-                    }
-                } else{
-                    // Display an error message if username doesn't exist
-                    $username_err = "No existe cuenta registrada con ese nombre de usuario.";
-                }
-            } else{
-                echo "Algo salió mal, por favor vuelve a intentarlo.";
-            }
-        }
-        
-        // Close statement
-        mysqli_stmt_close($stmt);
-    }
-    
-    // Close connection
-    mysqli_close($link);
-}
-?>
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/cssFile.css">
+    <title>Document</title>
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Login ConfiguroWeb</h2>
-        <p>Por favor, complete sus credenciales para iniciar sesión.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Usuario</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Contraseña</label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Ingresar">
-            </div>
-            <p>¿No tienes una cuenta? <a href="register.php">Regístrate ahora</a>.</p>
+    <div id="login-box">
+        <div class="left">
+            <h1>Sign Up</h1>
+            <form action="" name="signUp" id="signUp">
+                <input type="text" id="username" name="username" placeholder="username"><br><br>
+                <input type="text" id="email" name ="email" placeholder="E-mail"><br><br>
+                <input type="password" id="password" name="password" placeholder="Password"><br><br>
+                <input type="submit" id="saveData" name="signup_submit" value="Register"><br>
+            </form>
+
+        </div>
+
+        <div class="LogIn"><h1>Log In</h1></div>
+        <form action="" name="login" id="login">
+
+            <input type="text" id="email2" name ="email2" placeholder="E-mail"><br><br>
+            <input type="password" id="password2" name="password2" placeholder="Password"><br><br>
+            <input type="submit" id="saveData2" name="signup_submit" value="Login"><br><br><br>
         </form>
-    </div>    
+        <form action="">
+            <input type="submit" id="logout" name="logout" value="logout">
+        </form>
+    </div>
 </body>
-</html>
+<script type="module">
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
+import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword,  signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider,  signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyB2ASZtUtG7nWSlUff-ptZmSPQvZEoct5g",
+    authDomain: "login-21969.firebaseapp.com",
+    databaseURL: "https://login-21969-default-rtdb.firebaseio.com",
+    projectId: "login-21969",
+    storageBucket: "login-21969.appspot.com",
+    messagingSenderId: "592377774992",
+    appId: "1:592377774992:web:9f495d561230fd5ed12915",
+    measurementId: "G-Q384L713V1"
+    };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const database = getDatabase(app);
+const auth = getAuth();
+
+
+
+    const boton = document.getElementById('saveData')
+    //Registrarse
+    boton.addEventListener('click', (e) =>{
+        e.preventDefault()
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+        let username = document.getElementById('username').value;
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user
+                set(ref(database, 'users/' + user.uid),{
+                    username: username,
+                    email: email               
+                })
+
+                alert("Usuario registrado")
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage)
+                // ..
+            })
+        })
+
+
+
+    const boton2 = document.getElementById('saveData2')
+    boton2.addEventListener('click', (e)=>{
+        e.preventDefault()
+        let email2 = document.getElementById('email2').value;
+        let password2 = document.getElementById('password2').value;
+
+        signInWithEmailAndPassword(auth, email2, password2)
+            .then((userCredential) => {
+                // Signed in
+
+
+                const user = userCredential.user
+
+                const dt = new Date()
+                update(ref(database, 'users/' + user.uid),{
+                    last_login: dt,
+                })
+
+                console.log(user)
+                alert("Usuario logueado")
+                header('location: paginaPrincipal.php');
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage)
+
+
+            })
+    })
+
+    const user = auth.currentUser;
+    onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        console.log("UID " + uid)
+        console.log(user)
+        // ...
+    } else {
+        // User is signed out
+        // ...
+
+    }
+    });
+
+    const boton3 = document.getElementById('logout')
+    boton3.addEventListener('click', (e) =>{
+        e.preventDefault()
+        alert(user)
+        signOut(auth).then(() => {
+        // Sign-out successful.
+            alert("Que tenga buen dia")
+            alert(user)
+        }).catch((error) => {
+        // An error happened.
+            alert("Error al cerrar sesion")
+        });
+    })
+  </script>
+</html> 
