@@ -20,7 +20,7 @@ if (empty($_SESSION['id'])) {
 
     <!-- Custom styles for this template-->
     <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
+    
     
 
 </head>

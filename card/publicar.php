@@ -24,12 +24,9 @@ if (isset($_POST)) {
     }
 }
 include("headerindex.php"); ?>
-<head>
-    <link rel="stylesheet" type="text/css" href="assets/css/sb-admin-2.min.css">
-</head>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Productos</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="abrirProducto"><i class="fas fa-plus fa-sm text-white-50"></i> Nuevo</a>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="abrirProducto" name="abrirProducto"><i class="fas fa-plus fa-sm text-white-50"></i> Nuevo</a>
 </div>
 <div class="row">
     <div class="col-md-12">
@@ -138,6 +135,4 @@ include("headerindex.php"); ?>
         </div>
     </div>
 </div>
-
-
 <?php include("admin/includes/footer.php"); ?>

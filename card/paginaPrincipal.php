@@ -1,4 +1,7 @@
-<?php require_once "config/conexion.php"; ?>
+<?php 
+require_once "config/conexion.php";
+require_once "usuarioActivo.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
