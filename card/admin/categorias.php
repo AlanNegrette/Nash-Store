@@ -1,5 +1,5 @@
 <?php
-require_once "../config/conexion.php";
+require_once "../modelos/M_conexion.php";
 
 if (isset($_POST)) {
     if (!empty($_POST)) {

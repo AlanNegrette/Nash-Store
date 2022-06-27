@@ -13,7 +13,7 @@ if (!empty($_SESSION['active'])) {
                         </button>
                     </div>';
         } else {
-            require_once "../config/conexion.php";
+            require_once "../modelos/M_conexion.php";
             $user = mysqli_real_escape_string($conexion, $_POST['usuario']);
             $clave = md5(mysqli_real_escape_string($conexion, $_POST['clave']));
             $query = mysqli_query($conexion, "SELECT * FROM usuarios WHERE usuario = '$user' AND clave = '$clave'");
