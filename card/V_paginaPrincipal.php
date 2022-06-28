@@ -32,15 +32,15 @@ require_once "modelos/M_conexion.php";
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <a href="#" class="nav-link text-info" category="all">Todo</a>
+                        <a href="#" class="nav-link" category=""> Todo</a>
                         <?php
                         $query = mysqli_query($conexion, "SELECT * FROM categorias");
                         while ($data = mysqli_fetch_assoc($query)) { ?>
-                            <a href="#" class="nav-link" category="<?php echo $data['categoria']; ?>"><?php echo $data['categoria']; ?></a>
+                            <a href="#" class="nav-link" category=""<?php echo $data['categoria']; ?>"><?php echo $data['categoria']; ?></a>
                         <?php } ?>
                     </ul>
-                    <a href='V_publicar.php' class="nav-link text-info" id="administrador" category="all"> Publicar productos</a>
-                    <a href='admin/V_index.php' class="nav-link text-info" id="administrador" category="all"> VERSION ADMIN</a>
+                    <a href='V_publicar.php' class="nav-link" category=""> Publicar productos</a>
+                    <a href='admin/V_index.php' class="nav-link" category="" id="administrador"> VERSION ADMIN</a>
                     
                     
                     
@@ -71,7 +71,9 @@ require_once "modelos/M_conexion.php";
     <!-- Core theme JS-->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/scripts.js"></script>
-    <script src="JS/JS_usuarioActivo.js" type="module"></script>
+    <?php
+    require("JS/F_usuarioActivo.php");
+    ?>
 </body>
 
 </html>

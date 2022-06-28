@@ -16,7 +16,7 @@
 					<input type="text" id="username" name="username" placeholder="Nombre de usuario" required="">
 					<input type="text" id="email" name ="email" placeholder="E-mail" required="">
 					<input type="password" id="password" name="password" placeholder="Contraseña" required="">
-					<input type="submit" id="saveData" name="signup_submit" value="Register"></br>
+					<input type="submit" id="saveData" name="signup_submit" value="Registrar"></br>
 
 				</form>
 			</div>
@@ -26,14 +26,17 @@
 					<label for="chk" aria-hidden="true">Iniciar Sesion</label>
 					<input type="text" id="email2" name ="email2" placeholder="E-mail" required="">
 					<input type="password" id="password2" name="password2" placeholder="Contraseña" required="">
-					<input type="submit" id="saveData2" name="signup_submit" value="Login">
+					<input type="submit" id="saveData2" name="signup_submit" value="Iniciar Sesion">
 				</form>
 			</div>
 
-            <form action="">
-                <input type="submit" id="logout" name="logout" value="logout">
-            </form>
-	</div>
+			<form action="">
+        		<input type="submit" id="logout" name="logout" value="logout">
+    		</form>       
+	</div>	
 </body>
 </html>
+<?php
+require_once("JS/JS_login.php");
+?>
 
