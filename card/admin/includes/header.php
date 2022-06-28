@@ -34,7 +34,7 @@ if (empty($_SESSION['id'])) {
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../V_paginaPrincipal.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -46,7 +46,7 @@ if (empty($_SESSION['id'])) {
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="V_index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Menús</span></a>
             </li>
@@ -56,12 +56,12 @@ if (empty($_SESSION['id'])) {
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="categorias.php">
+                <a class="nav-link" href="V_categorias.php">
                     <i class="fas fa-tag"></i>
                     <span>Categorias</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="productos.php">
+                <a class="nav-link" href="V_productos.php">
                     <i class="fas fa-list"></i>
                     <span>Productos</span></a>
             </li>
@@ -121,7 +121,7 @@ if (empty($_SESSION['id'])) {
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="../salir.php">
+                                <a class="dropdown-item" href="../controladores/C_cerrarSesion.php">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Salir
                                 </a>

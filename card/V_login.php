@@ -1,35 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="slide navbar style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/cssFile.css">
-    <title>Document</title>
 </head>
 <body>
-    <div id="login-box">
-        <div class="left">
-            <h1>Sign Up</h1>
-            <form action="" name="signUp" id="signUp">
-                <input type="text" id="username" name="username" placeholder="username"><br><br>
-                <input type="text" id="email" name ="email" placeholder="E-mail"><br><br>
-                <input type="password" id="password" name="password" placeholder="Password"><br><br>
-                <input type="submit" id="saveData" name="signup_submit" value="Register"><br>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+                <form action="" name="signUp" id="signUp">
+					<label for="chk" aria-hidden="true">Registrarse</label>
+					<input type="text" id="username" name="username" placeholder="Nombre de usuario" required="">
+					<input type="text" id="email" name ="email" placeholder="E-mail" required="">
+					<input type="password" id="password" name="password" placeholder="Contraseña" required="">
+					<input type="submit" id="saveData" name="signup_submit" value="Register"></br>
+
+				</form>
+			</div>
+
+			<div class="login">
+                <form action="" name="login" id="login">
+					<label for="chk" aria-hidden="true">Iniciar Sesion</label>
+					<input type="text" id="email2" name ="email2" placeholder="E-mail" required="">
+					<input type="password" id="password2" name="password2" placeholder="Contraseña" required="">
+					<input type="submit" id="saveData2" name="signup_submit" value="Login">
+				</form>
+			</div>
+
+            <form action="">
+                <input type="submit" id="logout" name="logout" value="logout">
             </form>
-
-        </div>
-
-        <div class="LogIn"><h1>Log In</h1></div>
-        <form action="" name="login" id="login">
-
-            <input type="text" id="email2" name ="email2" placeholder="E-mail"><br><br>
-            <input type="password" id="password2" name="password2" placeholder="Password"><br><br>
-            <input type="submit" id="saveData2" name="signup_submit" value="Login"><br><br><br>
-        </form>
-        <form action="">
-            <input type="submit" id="logout" name="logout" value="logout">
-        </form>
-    </div>
+	</div>
 </body>
-</html> 
+</html>
+

@@ -48,7 +48,7 @@
                     <span>Eliminar</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="productos.php">
+                <a class="nav-link" href="V_productos.php">
                     <i class="fas fa-list"></i>
                     <span>Modificar</span></a>
             </li>

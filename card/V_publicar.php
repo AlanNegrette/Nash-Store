@@ -1,16 +1,35 @@
 <?php
-require_once "controladores/C_publicar.php";
+include("V_headerPublicar.php"); 
+require_once ("modelos/M_conexion.php");
 ?>
 
-<div id="productos" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-gradient-primary text-white">
-                <h5 class="modal-title" id="title"></h5>
-                <button class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+<?php
+if (isset($_POST)) {
+    if (!empty($_POST)){ 
+        $nombre = $_POST['nombre'];
+        $cantidad = $_POST['cantidad'];
+        $descripcion = $_POST['descripcion'];
+        $p_normal = $_POST['p_normal'];
+        $p_rebajado = $_POST['p_rebajado'];
+        $categoria = $_POST['categoria'];
+        $img = $_FILES['foto'];
+        $name = $img['name'];
+        $tmpname = $img['tmp_name'];
+        $fecha = date("YmdHis");
+        $foto = $fecha . ".jpg";
+        $destino = "assets/img/" . $foto;
+        $query = mysqli_query($conexion, "INSERT INTO productos(nombre, descripcion, precio_normal, precio_rebajado, cantidad, imagen, id_categoria) VALUES ('$nombre', '$descripcion', '$p_normal', '$p_rebajado', $cantidad, '$foto', $categoria)");
+        if ($query) {
+            if (move_uploaded_file($tmpname, $destino)) {
+                header('Location: V_publicar.php');
+                
+            }
+        }
+    }
+}
+?>
+
+            INSERTAR PRODUCTO
             <div class="modal-body">
                 <form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
                     <div class="row">
@@ -66,7 +85,4 @@ require_once "controladores/C_publicar.php";
                     <button class="btn btn-primary" type="submit">Registrar</button>
                 </form>
             </div>
-        </div>
-    </div>
-</div>
 <?php include("admin/includes/footer.php"); ?>

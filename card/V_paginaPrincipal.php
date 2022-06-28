@@ -9,7 +9,7 @@ require_once "modelos/M_conexion.php";
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Carrito de Compras</title>
+    <title>Nash Store</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -40,11 +40,11 @@ require_once "modelos/M_conexion.php";
                         <?php } ?>
                     </ul>
                     <a href='V_publicar.php' class="nav-link text-info" id="administrador" category="all"> Publicar productos</a>
-                    <a href='admin/productos.php#' class="nav-link text-info" id="administrador" category="all"> VERSION ADMIN</a>
+                    <a href='admin/V_index.php' class="nav-link text-info" id="administrador" category="all"> VERSION ADMIN</a>
                     
                     
                     
-                </div>
+                </div>>
             </div>
         </nav>
     </div>
@@ -58,7 +58,7 @@ require_once "modelos/M_conexion.php";
         </div>
     </header>
     <?php
-    require_once("controladores/C_mostrarProductos");
+    require_once("controladores/C_mostrarProductos.php");
     ?>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
