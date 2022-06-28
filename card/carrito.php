@@ -3,7 +3,6 @@ require_once "modelos/M_conexion.php";
 require_once "modelos/M_config.php";
 ?>
 <?php
-
 require_once("V_Carrito.php");
 ?>
 
