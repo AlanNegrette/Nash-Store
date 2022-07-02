@@ -32,7 +32,7 @@
 
 			<form action="">
         		<input type="submit" id="logout" name="logout" value="logout">
-    		</form>       
+    		</form>				
 	</div>	
 </body>
 </html>

@@ -16,7 +16,7 @@ if (!empty($_SESSION['active'])) {
             require_once "../modelos/M_conexion.php";
             $user = mysqli_real_escape_string($conexion, $_POST['usuario']);
             $clave = md5(mysqli_real_escape_string($conexion, $_POST['clave']));
-            $query = mysqli_query($conexion, "SELECT * FROM usuarios WHERE usuario = '$user' AND clave = '$clave'");
+            $query = mysqli_query($conexion, "SELECT * FROM admins WHERE usuario = '$user' AND clave = '$clave'");
             mysqli_close($conexion);
             $resultado = mysqli_num_rows($query);
             if ($resultado > 0) {

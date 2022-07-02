@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-06-2022 a las 03:27:25
+-- Tiempo de generación: 02-07-2022 a las 08:23:54
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -24,6 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(20) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `clave` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `admins`
+--
+
+INSERT INTO `admins` (`id`, `usuario`, `nombre`, `clave`) VALUES
+(1, 'admin', 'Alan Negrette', '21232f297a57a5a743894a0e4a801fc3');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `categorias`
 --
 
@@ -37,10 +57,9 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `categoria`) VALUES
-(1, 'Tecnologia'),
-(2, 'Bebidas'),
-(3, 'Muebles'),
-(4, 'Ropas');
+(10, 'Ropa'),
+(12, 'Muebles'),
+(14, 'Tecnologia');
 
 -- --------------------------------------------------------
 
@@ -59,27 +78,12 @@ CREATE TABLE `productos` (
   `id_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `users`
+-- Volcado de datos para la tabla `productos`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
-(1, 'alan', '$2y$10$/IbLgwkzmCpBTCuzp4xr7../O/jtyH26.21HR49PIqhMT6q86hEsq', '2022-06-09 22:19:41'),
-(2, 'alan2', '$2y$10$lV.AbnmrZpagRA1nRXmhremJYcdECoW.7n74vm/YJphJeisgPF7la', '2022-06-09 22:21:08'),
-(3, 'alan4', '$2y$10$5HIoQeqQrOCK06KkFT6BOu6oqUu81mDrYk/xe7NKhzwty/ClSGBZm', '2022-06-09 22:22:09');
+INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio_normal`, `precio_rebajado`, `cantidad`, `imagen`, `id_categoria`) VALUES
+(17, 'Re facha', 'Producto re fachero', '10.00', '10.00', 20, '20220628043310.jpg', 10);
 
 -- --------------------------------------------------------
 
@@ -88,22 +92,47 @@ INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `usuario` varchar(20) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `clave` varchar(100) NOT NULL
+  `id` int(255) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `clave`) VALUES
-(1, 'admin', 'Alan Negrette', '21232f297a57a5a743894a0e4a801fc3');
+INSERT INTO `usuarios` (`id`, `nombre`, `email`) VALUES
+(36, 'sdasdasdasd', 'sadasdasdada@gmail.com'),
+(37, 'elmacabro23', 'macabro@gmail.com'),
+(38, 'dasdsa', 'pebete@gmail.com'),
+(39, 'adada21312d', '215155@gmail.com'),
+(40, 'asdada', 'holahola3123@gmail.com'),
+(41, 'asdasdasdasdas', '31231283128@gmail.com'),
+(42, 'asdasdasdasd@gmail.com', '12312312@gmail.com'),
+(43, 'dssadasdas', 'holahola@gmail.com'),
+(44, 'alan', 'negrettealan2222@gmail.com'),
+(45, 'adasdasdsadsadasd', 'dkasdjasodasd@gmail.com'),
+(46, 'sdasdasdasd', '9dasjdasdk@gmail.com'),
+(47, 'alan', 'kapoalan4@gmail.com'),
+(48, 'sdasdasdasd', '9dasjd2asdk@gmail.com'),
+(49, 'sdasdasdasd', '12312n3j12n3j12kn@gmail.com'),
+(50, 'ajsdaskdasj', 'asdjsaudsa@gmail.com'),
+(51, 'asdasdasdas', '231312dasd@gmail.com'),
+(52, 'asdasdasdasdasdas', '231321rdasdsa3@gmail.com'),
+(53, 'dasdas', '312312312@gmail.com'),
+(69, 'dasdasd', '1312125@gmail.com'),
+(76, 'dasdasdas', 'mdaoame@gmail.com'),
+(165, 'dasdasdas', 'masdskado12@gmail.com');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `categorias`
@@ -119,45 +148,39 @@ ALTER TABLE `productos`
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
--- Indices de la tabla `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de la tabla `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
 
 --
 -- Restricciones para tablas volcadas

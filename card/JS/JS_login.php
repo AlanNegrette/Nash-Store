@@ -43,14 +43,18 @@
                     username: username,
                     email: email
                 })
-                alert("USUARIO REGISTRADO")
+                //require_once("../controladores/C_datosFirebase.php");
+                alert("USUARIO REGISTRADO");
+                window.location.href="http://localhost/Nash-store/card/controladores/C_datosFirebase.php";
+
+                
+                
 
                 // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                alert("Mail ya registrado!")
                 // ..
             })
         })
@@ -99,4 +103,5 @@
             alert("Error al cerrar sesion")
         });
     })
+
   </script>
