@@ -9,13 +9,13 @@
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
-    apiKey: "AIzaSyCmdbEs7sGw6-L21Jg4R4AX0eVTR6_bevM",
-    authDomain: "login-875cd.firebaseapp.com",
-    databaseURL: "https://login-875cd-default-rtdb.firebaseio.com",
-    projectId: "login-875cd",
-    storageBucket: "login-875cd.appspot.com",
-    messagingSenderId: "1090453735817",
-    appId: "1:1090453735817:web:f2fca95a30e7dcc47f3958"
+    apiKey: "AIzaSyBHwt7EBx6dKFPItt24QU7bWV31u6rVCXI",
+    authDomain: "login-nash-store.firebaseapp.com",
+    databaseURL: "https://login-nash-store-default-rtdb.firebaseio.com",
+    projectId: "login-nash-store",
+    storageBucket: "login-nash-store.appspot.com",
+    messagingSenderId: "574551718061",
+    appId: "1:574551718061:web:8baae8f39c2025a3b5ee24"
   };
 
   // Initialize Firebase
@@ -23,9 +23,6 @@
     const analytics = getAnalytics(app);
     const database = getDatabase(app);
     const auth = getAuth();
-
-  
-
 
     const boton = document.getElementById('saveData')
     //Registrarse
@@ -40,21 +37,17 @@
                 
                 const user = userCredential.user
                 set(ref(database, 'users/' + user.uid),{
+                    id:user.uid,
                     username: username,
                     email: email
                 })
-                //require_once("../controladores/C_datosFirebase.php");
                 alert("USUARIO REGISTRADO");
-                window.location.href="http://localhost/Nash-store/card/controladores/C_datosFirebase.php";
-
-                
-                
-
-                // ...
+                //window.location.href="http://localhost/Nash-store/card/controladores/C_datosFirebase.php";
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                alert("MAIL YA EN USO")
                 // ..
             })
         })
