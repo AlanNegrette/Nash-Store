@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-07-2022 a las 08:23:54
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Tiempo de generación: 12-07-2022 a las 16:45:26
+-- Versión del servidor: 8.0.26
+-- Versión de PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `usuario` varchar(20) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `clave` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `admins`
@@ -48,18 +48,21 @@ INSERT INTO `admins` (`id`, `usuario`, `nombre`, `clave`) VALUES
 --
 
 CREATE TABLE `categorias` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `categoria` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
 INSERT INTO `categorias` (`id`, `categoria`) VALUES
-(10, 'Ropa'),
-(12, 'Muebles'),
-(14, 'Tecnologia');
+(15, 'Pantalones'),
+(16, 'Remeras'),
+(17, 'Zapatillas'),
+(18, 'Buzos'),
+(19, 'Camperas'),
+(20, 'Gorros');
 
 -- --------------------------------------------------------
 
@@ -68,22 +71,28 @@ INSERT INTO `categorias` (`id`, `categoria`) VALUES
 --
 
 CREATE TABLE `productos` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `descripcion` text NOT NULL,
   `precio_normal` decimal(10,2) NOT NULL,
   `precio_rebajado` decimal(10,2) NOT NULL,
-  `cantidad` int(11) NOT NULL,
+  `cantidad` int NOT NULL,
   `imagen` varchar(50) NOT NULL,
-  `id_categoria` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_categoria` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio_normal`, `precio_rebajado`, `cantidad`, `imagen`, `id_categoria`) VALUES
-(17, 'Re facha', 'Producto re fachero', '10.00', '10.00', 20, '20220628043310.jpg', 10);
+(19, 'Gorro Nike', 'Gorro Nike ', '100.00', '80.00', 10, '20220712141322.jpg', 20),
+(20, 'Buzo Damp Brothers', 'Buzo Damp Brothers', '5000.00', '4999.00', 14, '20220712141613.jpg', 18),
+(22, 'Campera Glaciar', 'Campera Glaciar Hombre', '4000.00', '4000.00', 6, '20220712142758.jpg', 19),
+(23, 'Zapatillas New Balance', 'Zapatillas new balance de hombre, verdes', '8000.00', '7800.00', 7, '20220712143117.jpg', 17),
+(24, 'Remera Lisa Negra', 'Remera lisa negra new balance', '2000.00', '2000.00', 7, '20220712143336.jpg', 16),
+(25, 'Pantalon Cargo ', 'Pantalon cargo negreo de hombre ', '3500.00', '3400.00', 5, '20220712144020.jpg', 15),
+(26, 'prueba', 'prueba', '1000.00', '12.00', 10, '20220712155922.jpg', 17);
 
 -- --------------------------------------------------------
 
@@ -92,10 +101,10 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio_normal`, `precio
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(255) NOT NULL,
+  `id` int NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -162,25 +171,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
 
 --
 -- Restricciones para tablas volcadas
