@@ -28,8 +28,6 @@ if (isset($_POST)) {
     }
 }
 ?>
-
-            INSERTAR PRODUCTO
             <div class="modal-body">
                 <form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
                     <div class="row">
@@ -85,4 +83,7 @@ if (isset($_POST)) {
                     <button class="btn btn-primary" type="submit">Registrar</button>
                 </form>
             </div>
+            <body>
+            <script src="JS/F_usuarioActivo.js" type="module"></script>
+            </body>
 <?php include("admin/includes/footer.php"); ?>

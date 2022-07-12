@@ -34,45 +34,16 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Tienda <sup>Online</sup></div>
             </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="categorias.php">
-                    <i class="fas fa-tag"></i>
-                    <span>Eliminar</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="V_productos.php">
-                    <i class="fas fa-list"></i>
-                    <span>Modificar</span></a>
-            </li>
-
-            <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
         </ul>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
-
+            <div id="content">                
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                    <h3>PUBLICAR PRODUCTO</h3>
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -127,6 +98,10 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+
+                <body>
+                <script src="JS/F_usuarioActivo.js" type="module"></script>
+                </body>
 
                     <!-- Page Heading -->
                     

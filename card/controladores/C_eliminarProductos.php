@@ -1,3 +1,4 @@
+
 <?php
 if (isset($_GET)) {
     if (!empty($_GET['accion']) && !empty($_GET['id'])) {

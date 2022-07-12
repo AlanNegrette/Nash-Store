@@ -11,7 +11,8 @@ require_once "modelos/M_conexion.php";
     <meta name="author" content="" />
     <title>Nash Store</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/logo.png" />
+
     <!-- Bootstrap icons-->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" /> -->
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -20,7 +21,7 @@ require_once "modelos/M_conexion.php";
     <link rel="stylesheet" type="text/css" href="../assets/css/sb-admin-2.min.css">
 </head>
 
-<body>
+<body>  
     <a href="#" class="btn-flotante" id="btnCarrito">Carrito <span class="badge bg-success" id="carrito">0</span></a>
     <!-- Navigation-->
     <div class="container">
@@ -32,22 +33,22 @@ require_once "modelos/M_conexion.php";
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <a href="#" class="nav-link" category=""> Todo</a>
+                        <a href="#" class="nav-link" category="all"> Todo</a>
                         <?php
                         $query = mysqli_query($conexion, "SELECT * FROM categorias");
                         while ($data = mysqli_fetch_assoc($query)) { ?>
-                            <a href="#" class="nav-link" category=""<?php echo $data['categoria']; ?>"><?php echo $data['categoria']; ?></a>
+                            <a href="#" class="nav-link" category="<?php echo $data['categoria']; ?>"><?php echo $data['categoria']; ?></a>
                         <?php } ?>
                     </ul>
                     <a href='V_publicar.php' class="nav-link" category=""> Publicar productos</a>
                     <a href='admin/V_index.php' class="nav-link" category="" id="administrador"> VERSION ADMIN</a>
                     
                     
-                    
                 </div>>
             </div>
         </nav>
     </div>
+    
     <!-- Header-->
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
@@ -63,7 +64,7 @@ require_once "modelos/M_conexion.php";
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Nash Store, All rights reserved</p>
         </div>
     </footer>
     <!-- Bootstrap core JS-->
@@ -71,9 +72,7 @@ require_once "modelos/M_conexion.php";
     <!-- Core theme JS-->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/scripts.js"></script>
-    <?php
-    require("JS/F_usuarioActivo.php");
-    ?>
+    <script src="JS/F_usuarioActivo.js" type="module"></script>
 </body>
 
 </html>

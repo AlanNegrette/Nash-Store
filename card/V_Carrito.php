@@ -75,6 +75,8 @@ require_once "modelos/M_config.php";
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Nash Store, All rights reserved</p>
         </div>
     </footer>
+    <script src="JS/F_usuarioActivo.js" type="module"></script>
+</body>

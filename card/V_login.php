@@ -1,3 +1,7 @@
+<?php
+require_once("JS/JS_login.php")
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,15 +32,19 @@
 					<input type="password" id="password2" name="password2" placeholder="Contraseña" required="">
 					<input type="submit" id="saveData2" name="signup_submit" value="Iniciar Sesion">
 				</form>
-			</div>
 
-			<form action="">
-        		<input type="submit" id="logout" name="logout" value="logout">
-    		</form>				
-	</div>	
+				<form action="" name="logout" id="logout">
+				<input type="submit" id="logout" name="logout" value="logout">
+				</form>
+			</div>
+			
+			
+			
+					
+	</div>
+			
 </body>
 </html>
-<?php
-require_once("JS/JS_login.php");
-?>
+
+
 

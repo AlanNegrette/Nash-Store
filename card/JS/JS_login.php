@@ -72,7 +72,6 @@
                 })
                 
                 console.log(user)
-                
                 window.location.href="http://localhost/Nash-store/card/V_paginaPrincipal.php";
                 // ...
             })
@@ -86,13 +85,9 @@
     const boton3 = document.getElementById('logout')
     boton3.addEventListener('click', (e) =>{
         e.preventDefault()
-        alert(user)
         signOut(auth).then(() => {
-        // Sign-out successful.
-            alert("Que tenga buen dia")
-            alert(user)
+            alert("Sesion Cerrada")
         }).catch((error) => {
-        // An error happened.
             alert("Error al cerrar sesion")
         });
     })
