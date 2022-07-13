@@ -33,14 +33,10 @@ require_once("JS/JS_login.php")
 					<input type="submit" id="saveData2" name="signup_submit" value="Iniciar Sesion">
 				</form>
 
-				<form action="" name="logout" id="logout">
+				<form action="" name="" id="">
 				<input type="submit" id="logout" name="logout" value="logout">
 				</form>
-			</div>
-			
-			
-			
-					
+			</div>					
 	</div>
 			
 </body>

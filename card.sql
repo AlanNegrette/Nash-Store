@@ -32,7 +32,7 @@ CREATE TABLE `admins` (
   `usuario` varchar(20) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `clave` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `admins`
@@ -50,7 +50,7 @@ INSERT INTO `admins` (`id`, `usuario`, `nombre`, `clave`) VALUES
 CREATE TABLE `categorias` (
   `id` int NOT NULL,
   `categoria` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `categorias`
@@ -79,7 +79,7 @@ CREATE TABLE `productos` (
   `cantidad` int NOT NULL,
   `imagen` varchar(50) NOT NULL,
   `id_categoria` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -104,7 +104,7 @@ CREATE TABLE `usuarios` (
   `id` int NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`

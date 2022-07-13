@@ -1,5 +1,3 @@
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-database.js";
@@ -28,17 +26,12 @@ const user = auth.currentUser;
 
     onAuthStateChanged(auth, (user) => {
     if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         console.log("UID " + uid)
         console.log(user)
         // ...
     } else {
         window.location.replace("http://localhost/Nash-store/card/V_login.php");
-        // User is signed out
-        // ...
-        
     }
     });
   

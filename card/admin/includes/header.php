@@ -58,6 +58,11 @@ if (empty($_SESSION['id'])) {
                     <i class="fas fa-list"></i>
                     <span>Productos</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="V_agregarAdmin.php">
+                    <i class="fas fa-list"></i>
+                    <span>Admins</span></a>
+            </li>
 
 
         </ul>

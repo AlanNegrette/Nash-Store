@@ -11,7 +11,7 @@ require_once("../controladores/C_sesionAdmin.php");
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/sb-admin-2.min.css">
-    <link rel="shortcut icon" href="../assets/img/favicon.ico" />
+    <link rel="shortcut icon" href="../assets/img/admin.jpg" />
 </head>
 
 <body class="bg-gradient-primary">
@@ -28,7 +28,7 @@ require_once("../controladores/C_sesionAdmin.php");
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image">
-                                <img class="img-thumbnail" src="assets/img/logo.png" alt="">
+                                <img class="img-thumbnail" src="../assets/img/admin.jpg" alt="">
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
